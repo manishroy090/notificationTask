@@ -1,0 +1,26 @@
+# === Laravel ===
+/laravel/vendor
+/laravel/node_modules
+/laravel/.env
+/laravel/.phpunit.result.cache
+/laravel/storage/*.key
+/laravel/public/storage
+/laravel/storage/app/public
+/laravel/storage/logs/*.log
+/laravel/bootstrap/cache/*.php
+/laravel/.idea/
+*.log
+
+# === Node.js ===
+/nodejs/node_modules
+/nodejs/.env
+/nodejs/dist
+/nodejs/logs
+/nodejs/npm-debug.log*
+
+# === OS & Editor Junk ===
+.DS_Store
+Thumbs.db
+*.swp
+.vscode/
+.idea/
