@@ -102,7 +102,7 @@ class NotificationController extends Controller
 
     public function notificationSummary()
     {
-        $summary = Cache::remember('recent_notification', 60, function () {
+        $summary = Cache::remember('summary_notification', 60, function () {
              return  $this->NotificationRepository->getNotificationSummary();
         });
 
