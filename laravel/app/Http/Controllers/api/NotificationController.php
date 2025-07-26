@@ -25,6 +25,7 @@ class NotificationController extends Controller
     protected $rateLimitNo = 10;
 
 
+
     public function __construct(RabbitMQPusher $rabbitMQPusher, NotificationRepository $notificationRepository)
     {
 
