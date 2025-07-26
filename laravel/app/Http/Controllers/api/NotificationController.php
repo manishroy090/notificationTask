@@ -35,9 +35,10 @@ class NotificationController extends Controller
     public function store(NotificationStoreRequest $request)
     {
         $validatedNotification =  $request->validated();
+    
         $resMessage = "message published successfully";
         try {
-            $key = "rate_limit_user_{$request->user_id}";
+            $key = "rate_limit_user_{$validatedNotification['user_id']}";
             $count = Cache::get($key, 0);
 
             if ($count >= $this->rateLimitNo) {
@@ -60,7 +61,7 @@ class NotificationController extends Controller
         } catch (\Throwable $th) {
             //throw $th;
             $resMessage = "Something went wrong";
-            log::info([$validatedNotification->user_id=>$th->getMessage()]);
+            log::info([$validatedNotification['user_id']=>$th->getMessage()]);
             return response()->json([
               'message'=>$resMessage 
             ],500);

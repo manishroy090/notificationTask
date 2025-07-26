@@ -9,10 +9,17 @@ use PhpAmqpLib\Message\AMQPMessage;
 class  RabbitMQPusher{
 
 
-   protected $queue = 'notification';
+   protected $queue ;
+
+   public function __construct()
+   {
+      $this->queue = env('RABBITMQ_QUEUE');
+      
+      
+   }
 
    public function publish($data){
-      $connection = new AMQPStreamConnection('localhost',5672,'guest','guest');
+      $connection = new AMQPStreamConnection(env('RABBITMQ_HOST'),env('RABBITMQ_PORT'),env('RABBITMQ_USER'),env('RABBITMQ_PASSWORD'));
       $channel = $connection->channel();
       $channel->queue_declare($this->queue,false,true,false,false);
       $msg = new AMQPMessage(json_encode($data));
